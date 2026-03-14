@@ -5,7 +5,7 @@
 *.gz
 *.tar.gz
 *.zip
-*.png
+#*.png
 *.pdf
 *.txt
 *.dat
