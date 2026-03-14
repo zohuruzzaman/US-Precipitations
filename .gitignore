@@ -1,0 +1,48 @@
+# ── Data files (never commit) ─────────────────────────────────────────────
+*.parquet
+*.csv
+*.dly
+*.gz
+*.tar.gz
+*.zip
+*.png
+*.pdf
+*.txt
+*.dat
+
+# ── DuckDB database (rebuilt from scripts) ────────────────────────────────
+recon/file_inventory.duckdb
+recon/file_inventory.duckdb.wal
+
+# ── Python artifacts ──────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.Python
+
+# ── macOS ─────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ── Editors ───────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Jupyter checkpoints ───────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── EXCEPTIONS: always include scripts and notebooks ──────────────────────
+!**/*.py
+!*.py
+!recon/*.py
+!recon/plot_coverage.py
+!recon/build_*.py
+!recon/convert_*.py
+!recon/add_*.py
+!explorer.ipynb
+!PrecipAnalysis.ipynb
+!recon/METADATA_README.md
+!.gitignore
