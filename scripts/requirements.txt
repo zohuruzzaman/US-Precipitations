@@ -1,0 +1,14 @@
+duckdb==1.5.0
+folium==0.20.0
+httpx==0.28.1
+matplotlib==3.10.3
+numpy==2.3.4
+pandas==2.3.1
+pyarrow==23.0.1
+requests==2.32.5
+shapely==2.1.2
+streamlit==1.55.0
+streamlit-folium==0.26.2
+# cartopy  # optional: enables "Export Coverage Maps" SVG feature
+#           # macOS/Linux: pip install cartopy
+#           # Windows: conda install -c conda-forge cartopy

@@ -1,0 +1,15 @@
+.DS_Store
+.claude/
+.downloads_15min/
+
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Raw observation downloads are intentionally not committed. They are very large
+# and can be rebuilt with the scripts in this repo.
+data/*
+!data/recon/
+data/recon/*.log
+data/recon/.refresh*
+data/recon/.index_progress.json
