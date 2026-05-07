@@ -338,6 +338,17 @@ def filter_by_radius(df: pd.DataFrame, clat: float, clon: float, radius_km: floa
     return df[dist <= radius_km].copy()
 
 
+def sync_station_selection(selection, allowed_ids: set) -> pd.DataFrame | None:
+    """Keep map selection compatible with the current station/filter schema."""
+    if selection is None or not isinstance(selection, pd.DataFrame) or selection.empty:
+        return None
+    if "ncei_id" not in selection.columns:
+        return None
+
+    selected = selection[selection["ncei_id"].isin(allowed_ids)].copy()
+    return selected if len(selected) else None
+
+
 # ---------------------------------------------------------------------------
 # File-path lookup from inventory
 # ---------------------------------------------------------------------------
@@ -1796,9 +1807,10 @@ if clicked_obj and isinstance(clicked_obj, dict):
 # Keep any active map selection consistent with the current sidebar filters.
 if st.session_state["selected_stations"] is not None:
     _allowed_ids = set(filtered["ncei_id"].tolist())
-    _selected_now = st.session_state["selected_stations"]
-    _selected_now = _selected_now[_selected_now["ncei_id"].isin(_allowed_ids)].copy()
-    st.session_state["selected_stations"] = _selected_now if len(_selected_now) else None
+    st.session_state["selected_stations"] = sync_station_selection(
+        st.session_state["selected_stations"],
+        _allowed_ids,
+    )
 
 if st.button("✖ Clear map selection", use_container_width=False, key="clr_sel_main"):
     st.session_state["selected_stations"] = None
